@@ -15,7 +15,6 @@ exports.postTodo = async (req, res) => {
     let newTodo = { todotext: todotext }
     await Todo.create(newTodo, (err, newTodo) => {
         try {
-            log(req.body);
             return res.status(201).send("Created");
         } catch (err) {
             log(`Post route Error: ${err}`);
@@ -28,7 +27,6 @@ exports.getNewTodo = async (req, res) => {
 exports.getTodoById = async (req, res) => {
     await Todo.findById(req.params.id, (err, foundTodo) => {
         try {
-            log(req.body)
             return res.status(200).send({ todo: foundTodo });
         } catch (err) {
             log(`Get By ID Route: ${err}`);
@@ -47,9 +45,12 @@ exports.editTodoByID = async (req, res) => {
 }
 exports.putsTodoByID = async (req, res) => {
     await Todo.findByIdAndUpdate(req.params.id,
-        todo = { todotext: req.body.todotext, isComplete: req.body.isComplete }, (err, updatedTodo) => {
+        {
+            todotext: req.body.todotext,
+            isComplete: req.body.isComplete
+        },
+        (err, updatedTodo) => {
             try {
-                log(req.body);
                 return res.status(200).send({ updatedTodo });
             } catch (err) {
                 log(`Put route: ${err}`);
@@ -59,7 +60,6 @@ exports.putsTodoByID = async (req, res) => {
 exports.deleteTodoByID = async (req, res) => {
     await Todo.findOneAndDelete({ _id: req.params.id }, (err) => {
         try {
-            log(req.params.id);
             res.redirect("/");
         } catch (err) {
             log(`Delete Route: ${err}`);

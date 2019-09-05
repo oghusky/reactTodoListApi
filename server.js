@@ -1,5 +1,4 @@
 const express = require("express");
-const Todo = require("./models/TodoItem");
 const db = require("./utils/config");
 const mongoose = require("mongoose");
 const log = console.log;
@@ -7,11 +6,13 @@ const bodyParser = require("body-parser");
 const app = express();
 const path = require("path");
 const PORT = process.env.PORT || 5000;
+const cors = require("cors");
 // connects to db
 mongoose.connect(db.connection, { useNewUrlParser: true }).then(response => {
     log("Connected to DB");
 });
-
+// use cors
+app.use(cors());
 // points to static folder
 app.use(express.static(path.join(__dirname, "public")));
 // return text as json
