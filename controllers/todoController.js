@@ -1,12 +1,11 @@
 const Todo = require("../models/TodoItem");
-const log = console.log;
 exports.getTodo = async (req, res) => {
     await Todo.find({}, ((err, allTodos) => {
         try {
             return res.status(200).send(allTodos);
         }
         catch (err) {
-            log(`Get route Error: ${err}`);
+            console.log(`Get route Error: ${err}`);
         }
     }))
 }
@@ -19,7 +18,7 @@ exports.postTodo = async (req, res) => {
         try {
             return res.status(201).send("Created");
         } catch (err) {
-            log(`Post route Error: ${err}`);
+            console.log(`Post route Error: ${err}`);
         }
     })
 }
@@ -31,7 +30,7 @@ exports.getTodoById = async (req, res) => {
         try {
             return res.status(200).send({ todo: foundTodo });
         } catch (err) {
-            log(`Get By ID Route: ${err}`);
+            console.log(`Get By ID Route: ${err}`);
             return res.status(404).redirect(`back`);
         }
     })
@@ -41,7 +40,7 @@ exports.editTodoByID = async (req, res) => {
         try {
             return res.status(200).send({ todo: foundTodo });
         } catch (err) {
-            log(`Edit Route: ${err}`);
+            console.log(`Edit Route: ${err}`);
         }
     })
 }
@@ -55,7 +54,7 @@ exports.putsTodoByID = async (req, res) => {
             try {
                 return res.status(200).send({ updatedTodo });
             } catch (err) {
-                log(`Put route: ${err}`);
+                console.log(`Put route: ${err}`);
             }
         })
 }
@@ -64,7 +63,7 @@ exports.deleteTodoByID = async (req, res) => {
         try {
             res.redirect("/");
         } catch (err) {
-            log(`Delete Route: ${err}`);
+            console.log(`Delete Route: ${err}`);
             res.redirect("/");
         }
     })

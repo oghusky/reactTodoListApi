@@ -5,10 +5,9 @@ const mongoose = require("mongoose");
 const app = express();
 const PORT = process.env.PORT || 5000;
 const cors = require("cors");
-const log = console.log;
 // connects to db
 mongoose.connect(db.connection, { useNewUrlParser: true }).then(response => {
-    log("Connected to DB");
+    console.log("Connected to DB");
 });
 // use cors
 app.use(cors());
@@ -21,5 +20,5 @@ const todoRoutes = require("./routes/todoRoutes");
 app.use("/", todoRoutes);
 // port to listen on
 app.listen(PORT, () => {
-    log(`Server Started on port ${PORT}`);
+    console.log(`Server Started on port ${PORT}`);
 });
