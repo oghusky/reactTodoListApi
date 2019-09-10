@@ -19,5 +19,5 @@ const todoRoutes = require("./routes/todoRoutes");
 app.use("/", todoRoutes);
 // port to listen on
 app.listen(process.env.PORT || 5000, () => {
-    console.log(`Server Started on port ${process.env.PORT}`);
+    console.log(`Server Started`);
 });
