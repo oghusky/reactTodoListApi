@@ -16,7 +16,8 @@ exports.postTodo = async (req, res) => {
     let newTodo = { todotext: todotext, details: details, isComplete: isComplete }
     await Todo.create(newTodo, (err, newTodo) => {
         try {
-            return res.status(201).send("Created");
+            res.status(201).send(newTodo);
+            res.redirect("/");
         } catch (err) {
             console.log(`Post route Error: ${err}`);
         }
@@ -31,7 +32,7 @@ exports.getTodoById = async (req, res) => {
             return res.status(200).send({ todo: foundTodo });
         } catch (err) {
             console.log(`Get By ID Route: ${err}`);
-            return res.status(404).redirect(`back`);
+            return res.status(404).redirect(`/`);
         }
     })
 }
