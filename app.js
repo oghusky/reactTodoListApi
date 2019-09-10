@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const app = express();
 const PORT = process.env.PORT || 5000;
 const cors = require("cors");
+const log = console.log;
 // connects to db
 mongoose.connect(db.connection, { useNewUrlParser: true }).then(response => {
     log("Connected to DB");
