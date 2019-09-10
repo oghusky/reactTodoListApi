@@ -11,7 +11,7 @@ exports.getTodo = async (req, res) => {
 }
 exports.postTodo = async (req, res) => {
     let todotext = req.body.todotext;
-    let details = req.body.details;
+    // let details = req.body.details;
     let isComplete = req.body.isComplete;
     let newTodo = { todotext: todotext, details: details, isComplete: isComplete }
     await Todo.create(newTodo, (err, newTodo) => {
