@@ -3,7 +3,6 @@ const express = require("express");
 const db = require("./utils/config");
 const mongoose = require("mongoose");
 const app = express();
-const PORT = process.env.PORT || 5000;
 const cors = require("cors");
 // connects to db
 mongoose.connect(db.connection, { useNewUrlParser: true }).then(response => {
@@ -19,6 +18,6 @@ const todoRoutes = require("./routes/todoRoutes");
 // use todo Routes
 app.use("/", todoRoutes);
 // port to listen on
-app.listen(PORT, () => {
+app.listen(process.env.PORT || 5000, () => {
     console.log(`Server Started on port ${PORT}`);
 });
