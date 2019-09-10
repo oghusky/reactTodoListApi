@@ -16,7 +16,7 @@ app.use(express.json());
 // require todo routes
 const todoRoutes = require("./routes/todoRoutes");
 // use todo Routes
-app.use("/", todoRoutes);
+app.use("/api", todoRoutes);
 // port to listen on
 app.listen(process.env.PORT || 5000, () => {
     console.log(`Server Started`);

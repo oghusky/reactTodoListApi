@@ -2,18 +2,18 @@ const express = require("express");
 const router = express.Router();
 const todoController = require("../controllers/todoController");
 
-router.get("/api", todoController.getTodo);
+router.get("/", todoController.getTodo);
 // post todos to db
-router.post("/api", todoController.postTodo);
+router.post("/", todoController.postTodo);
 // shows new todo
-router.get("/api/new", todoController.getNewTodo);
+router.get("/new", todoController.getNewTodo);
 // get todo by ID
-router.get("/api/:id", todoController.getTodoById);
+router.get("/:id", todoController.getTodoById);
 // edit by ID
-router.get("/api/:id/edit", todoController.editTodoByID);
+router.get("/:id/edit", todoController.editTodoByID);
 // put route by ID
-router.put("/api/:id", todoController.putsTodoByID);
+router.put("/:id", todoController.putsTodoByID);
 // delete by ID
-router.delete("/api/:id", todoController.deleteTodoByID);
+router.delete("/:id", todoController.deleteTodoByID);
 
 module.exports = router;
